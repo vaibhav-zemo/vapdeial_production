@@ -2,7 +2,8 @@
 module.exports.chatSockets = function(socketServer) {
     let io = require('socket.io')(socketServer, {
         cors: {           // using cors so that it allow cors policy
-          origin: "*",
+          origin: 'https://vapdeial.onrender.com',
+          methods: ['GET', 'POST'],
         }
       });
 
