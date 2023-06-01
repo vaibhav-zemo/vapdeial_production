@@ -5,7 +5,7 @@ class ChatEngine {
     this.name = name;
 
     // this io.connect fires the event in the chat_socket .on('connection')
-    this.socket = io.connect("https://vapdeial.onrender.com:5000");
+    this.socket = io.connect("https://vapdeial.onrender.com");
     // this io variable comes form the cdn of socket and this is global
 
     if (this.userEmail) {
