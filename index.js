@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 require('./config/view-helper')(app);
 
-const port = 8000;
+const port = process.env.PORT;
 const path = require('path');
 const expresslayout = require('express-ejs-layouts');
 const mongodb = require('./config/mongoose');
@@ -25,8 +25,8 @@ const customWare = require('./config/middleware');
 // setup the chat sever to be used with socket.io
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
-console.log('chat server is listening on port 5000')
+chatServer.listen(process.env.PORT2);
+console.log('chat server is listening on port', process.env.PORT2)
 
 if (env.name == 'development') {
     app.use(sassMiddleware({
@@ -65,7 +65,8 @@ app.use(session({
     },
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb://0.0.0.0/codeial_db',
+            // mongoUrl: 'mongodb://0.0.0.0/codeial_db',
+            mongoUrl: process.env.MONGOD_URL,
             mongooseConnection: mongodb,
             autoRemove: 'disabled'
         }, function (err) {
