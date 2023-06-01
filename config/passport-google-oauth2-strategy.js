@@ -8,9 +8,9 @@ const env = require('./enviroment');
 
 // tell passport to use a new strategy for google login
 passport.use(new googleStrategy({
-    clientID:env.google_clientID,
-    clientSecret:env.google_clientSecret,
-    callbackURL:env.google_callbackURL,
+    clientID: process.env.CODEIAL_GOOGLE_CLIENTID,
+    clientSecret: process.env.CODEIAL_GOOGLE_CLIENTSECRET,
+    callbackURL: process.env.CODEIAL_GOOGLE_CALLBACKURL,
 
     },function (accessToken,refreshToken,profile,done) {
         // find user
